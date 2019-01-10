@@ -11,4 +11,3 @@ void main(void) {
 	vec4 texColor = texture2D(texture, texCoord);
 	fragColour = texColor;
 }
-
