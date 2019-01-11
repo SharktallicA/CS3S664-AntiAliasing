@@ -2,13 +2,11 @@
 
 layout (location = 0) in vec4 vertexPos;
 layout (location = 1) in vec4 vertexColour;
-layout (location = 2) in vec3 vertexOffset;
 layout (location = 3) in vec3 textureColour;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
-uniform float scalar;
 
 out vec4 VertexColour;
 

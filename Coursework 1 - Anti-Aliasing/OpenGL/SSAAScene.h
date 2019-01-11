@@ -26,13 +26,10 @@ protected:
 	//Flags whether FBO is valid
 	bool fboOkay;
 
-	//
+	//Render quad (viewer for FBO product)
 	GLuint renderQuadVAO;
-	//
 	GLuint renderQuadVertBuffer;
-	//
 	GLuint renderQuadTexBuffer;
-	//
 	GLuint renderQuadShader;
 
 	//Scene size
@@ -51,21 +48,17 @@ protected:
 			&shader);
 
 		//Generates default scene of differently scaled spheres
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 50; i++)
 		{
 			//Generate model
 			Model* nModel = new Model("Resources\\Models\\Primitives\\Sphere.obj");
-			GLuint texture = TextureLoader::loadTexture("Resources\\Textures\\Ceres.jpg");
-			nModel->attachTexture(texture, "texture_diffuse1");
 
 			//Generate object's properties
-			vec3 pos(Utility::rand32(-5, 5), Utility::rand32(-5, 5), Utility::rand32(-5, 5));
-			vec3 rot(0, 0, 0);
-			float scale = Utility::rand32(0.25, 1.0);
-			vec3 sca(scale, scale, scale);
+			vec3 pos(Utility::rand32(-10, 10), Utility::rand32(-10, 10), Utility::rand32(-10, 10));
+			vec3 sca(Utility::rand32(0.5, 1.0), Utility::rand32(0.5, 1.0), Utility::rand32(0.5, 1.0));
 
 			//Create object
-			Object* tmp = new Object(pos, rot, sca);
+			Object* tmp = new Object(pos, vec3(0, 0, 0), sca);
 			tmp->AttachRenderer(new Renderer(tmp, nModel));
 			tmp->renderer->GiveCamera(sceneCam);
 			tmp->renderer->GiveShader(shader);
@@ -208,10 +201,10 @@ public:
 		if (!fboOkay) return; //Don't bother rendering if the FBO is kaput
 
 		//Binds FBO so all rendering is directed to FBO
-		glBindFramebuffer(GL_FRAMEBUFFER, fbo); // Make sure your multisampled FBO is the read framebuffer
+		glBindFramebuffer(GL_FRAMEBUFFER, fbo); 
 
 		// Clear the screen (in this case, the scene's texture)
-		glClearColor(0, 0, 0, 0);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glViewport(0, 0, sceneX * aaSamples, sceneY * aaSamples);

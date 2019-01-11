@@ -4,6 +4,7 @@
 #include "Physics.h"
 #include "Utility.h"
 #include "SSAAScene.h"
+#include "MSAAScene.h"
 #include <vector>
 
 #pragma region OGL function prototypes
@@ -27,6 +28,7 @@ bool flipScene = false;
 #pragma endregion
 
 SSAAScene* ssaaScene;
+MSAAScene* msaaScene;
 
 int main()
 {
@@ -38,8 +40,8 @@ int main()
 	cout << "Press \"space\" to toggle between FBO SSAA scene and non-FBO MSAA scene\n\n";
 
 	//Construct camera after requesting scene width/height from user
-	int width = Utility::getInt("Enter scene width: ", 800, 1600);
-	int height = Utility::getInt("Enter scene height: ", 600, 900);
+	int width = Utility::getInt("Enter scene width: ", 640, 2560);
+	int height = Utility::getInt("Enter scene height: ", 480, 1440);
 	lastX = width / 2.0f;
 	lastY = height / 2.0f;
 	camera = new Camera(width, height, 0.1, 100.0, glm::vec3(0.0f, 0.0f, 10.0f));
@@ -99,6 +101,7 @@ int main()
 	glEnable(GL_MULTISAMPLE);
 
 	ssaaScene = new SSAAScene(camera, width, height, aaSamples);
+	msaaScene = new MSAAScene(camera, width, height, aaSamples);
 
 	// Render loop
 	while (!glfwWindowShouldClose(window))
@@ -106,11 +109,13 @@ int main()
 		processInput(window);
 		timer.tick();
 
-		glClearColor(0, 0, 0, 1.0f);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		if (!flipScene)
 			ssaaScene->Render(timer.getDeltaTimeMiliseconds());
+		else
+			msaaScene->Render(timer.getDeltaTimeMiliseconds());
 
 		string title = "FPS: " + std::to_string(timer.averageFPS()) + " SPF: " + std::to_string(timer.currentSPF());
 		glfwSetWindowTitle(window, title.c_str());

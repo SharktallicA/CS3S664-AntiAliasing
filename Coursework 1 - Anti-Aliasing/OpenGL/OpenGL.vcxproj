@@ -148,6 +148,7 @@
     <ClInclude Include="..\Resources\CoreStructures\Timer.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="MSAAScene.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SSAAScene.h" />

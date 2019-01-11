@@ -10,5 +10,4 @@ public:
 	vector<float> vertices;
 	vector<float> colours;
 	vector<unsigned short> indices;
-	vector<float> offsets;
 };
