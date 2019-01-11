@@ -5,10 +5,11 @@
 
 using namespace std;
 
+//Contains a scene that does not use FBOs and applies multisampling anti-aliasing (MSAA)
 class MSAAScene
 {
 protected:
-	//Anti-aliasing sample rate
+	//Anti-aliasing sample size
 	int aaSamples;
 
 	//Scene size
@@ -26,7 +27,7 @@ protected:
 			string("Resources\\Shaders\\defaultShader.fs"),
 			&shader);
 
-		//Generates default scene of differently scaled spheres
+		//Generates default scene of differently scaled and rotated pyramids via manual geometry
 		for (int i = 0; i < 100; i++)
 		{
 			static float vertices[20] = {

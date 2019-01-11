@@ -1,10 +1,4 @@
 #pragma once
-/*
-	Scene object class
-	Khalid Ali 2018
-	http://khalidali.co.uk/
-*/
-
 #include "Includes.h"
 
 using namespace std;

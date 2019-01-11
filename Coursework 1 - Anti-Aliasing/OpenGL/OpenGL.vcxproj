@@ -158,17 +158,8 @@
   <ItemGroup>
     <None Include="Resources\Shaders\defaultShader.fs" />
     <None Include="Resources\Shaders\defaultShader.vs" />
-    <None Include="Resources\Shaders\modelShader.fs" />
-    <None Include="Resources\Shaders\modelShader.vs" />
     <None Include="Resources\Shaders\textureShader.fs" />
     <None Include="Resources\Shaders\textureShader.vs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\Textures\Ceres.jpg" />
-    <Image Include="Resources\Textures\Eris.jpg" />
-    <Image Include="Resources\Textures\Makemake.jpg" />
-    <Image Include="Resources\Textures\Uranus.jpg" />
-    <Image Include="Resources\Textures\Venus.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

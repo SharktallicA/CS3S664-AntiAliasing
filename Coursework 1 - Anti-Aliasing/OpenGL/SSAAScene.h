@@ -2,19 +2,19 @@
 #include "Object.h"
 #include "Renderer.h"
 #include "Utility.h"
-#include "TexturedQuad.h"
 
 //Enumerated anti-aliasing selection option
 enum AntiAliasingOption { None, SSAA, MSAA };
 
 using namespace std;
 
+//Contains a scene that does use FBOs and applies supersampling anti-aliasing (SSAA)
 class SSAAScene
 {
 protected:
-	//Anti-aliasing option
+	//Anti-aliasing option (NOT PRESENTLY USED)
 	AntiAliasingOption aaOpt;
-	//Anti-aliasing sample rate
+	//Anti-aliasing sample size
 	int aaSamples;
 
 	//Actual framebuffer object (FBO)
@@ -47,7 +47,7 @@ protected:
 			string("Resources\\Shaders\\defaultShader.fs"),
 			&shader);
 
-		//Generates default scene of differently scaled spheres
+		//Generates default scene of differently scaled spheres via model import
 		for (int i = 0; i < 50; i++)
 		{
 			//Generate model

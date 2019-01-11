@@ -5,13 +5,15 @@ uniform int sampleSize;
 
 in vec2 texCoord;
 
+//Provides relative-to-window coords of the current fragment
+//As opposed to texCoord that is relative to model
 layout(pixel_center_integer) in vec4 gl_FragCoord;
+
 layout (location=0) out vec4 fragColour;
 
 //Maximum amount of samples needed (to complete x16 AA)
-//Needed as const to initialise samples array,
-//otherwise non-const expression error
-const int maxSamples = 16 * 16;
+//Needed as const to initialise samples array, otherwise non-const expression error
+const int maxSamples = 32 * 32;
 
 void main(void)
 {
@@ -22,12 +24,11 @@ void main(void)
 	}
 	else //Else supersample
 	{
-		//Total amount of samples needed to supersample at given size
-		//Simply sampleSize squared
+		//Total amount of samples needed to supersample at specified size
 		int totalSamples = sampleSize * sampleSize;
 
 		//Array of sampled colours to later be averaged out
-		//Size is always maximum supported sample count (x16)y
+		//Size is always maximum supported sample count (32x32 or 1024)
 		vec4 samples[maxSamples];
 
 		for (int i = 0; i < sampleSize; i++)
