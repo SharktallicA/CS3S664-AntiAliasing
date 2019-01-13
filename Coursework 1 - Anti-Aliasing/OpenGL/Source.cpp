@@ -1,7 +1,7 @@
 ﻿#include "Includes.h"
 #include "Object.h"
 #include "Renderer.h"
-#include "Physics.h"
+//#include "Physics.h"
 #include "Utility.h"
 #include "SSAAScene.h"
 #include "MSAAScene.h"
@@ -40,8 +40,8 @@ int main()
 	cout << "Press \"space\" to toggle between FBO SSAA scene and non-FBO MSAA scene\n\n";
 
 	//Construct camera after requesting scene width/height from user
-	int width = Utility::getInt("Enter scene width: ", 640, 2560);
-	int height = Utility::getInt("Enter scene height: ", 480, 1440);
+	int width = Utility::getInt("Enter scene width: ", 640, 1024);
+	int height = Utility::getInt("Enter scene height: ", 480, 768);
 	lastX = width / 2.0f;
 	lastY = height / 2.0f;
 	camera = new Camera(width, height, 0.1, 100.0, glm::vec3(0.0f, 0.0f, 10.0f));

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Provides a medium to transport manual geometry
 class ShapeData
 {
 public:
