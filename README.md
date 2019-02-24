@@ -6,3 +6,5 @@ CS3S664: Real-Time Rendering Techniques
 * Visual Studio 2015
 * VC++ 140 compiler
 * OpenGL 3.3
+# Grade
+80 (Distinction)
